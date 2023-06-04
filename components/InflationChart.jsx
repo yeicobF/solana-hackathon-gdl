@@ -1,25 +1,16 @@
+import { getCountryInflation } from "@/server/inflation"
 import { Card, Title, LineChart } from "@tremor/react"
+import { useEffect, useState } from "react"
+import toast from "react-hot-toast"
 
 const chartdata = [
   {
-    month: "Enero",
-    Inflación: 2.04,
-  },
-  {
-    month: "Febrero",
-    Inflación: 1.96,
-  },
-  {
-    month: "Marzo",
-    Inflación: 1.96,
-  },
-  {
     month: "Abril",
-    Inflación: 1.93,
+    Inflación: 104.3,
   },
   {
     month: "Mayo",
-    Inflación: 1.88,
+    Inflación: 108.8,
   },
   //...
 ]
@@ -27,17 +18,33 @@ const chartdata = [
 const dataFormatter = (number) =>
   `${Intl.NumberFormat("us").format(number).toString()}%`
 
-export const InflationChart = () => (
-  <Card>
-    <Title>Inflación general</Title>
+const DEFAULT_COUNTRY = "Argentina"
 
-    <LineChart
-      className="mt-6 h-96 lg:h-72 lg:w-full w-[30rem]"
-      data={chartdata}
-      index="month"
-      categories={["Inflación"]}
-      colors={["purple"]}
-      yAxisWidth={40}
-    />
-  </Card>
-)
+export const InflationChart = ({ country = DEFAULT_COUNTRY }) => {
+  const [inflation, setInflation] = useState()
+
+  useEffect(() => {
+    getCountryInflation(country)
+      .then((data) => {
+        console.log({ data })
+      })
+      .catch(() => {
+        toast.error("Ha ocurrido un error")
+      })
+  }, [country])
+
+  return (
+    <Card>
+      <Title>Inflación en {country}</Title>
+
+      <LineChart
+        className="mt-6 h-96 lg:h-72 lg:w-full w-[30rem]"
+        data={chartdata}
+        index="month"
+        categories={["Inflación"]}
+        colors={["purple"]}
+        yAxisWidth={40}
+      />
+    </Card>
+  )
+}

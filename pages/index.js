@@ -1,6 +1,6 @@
 import { Card } from "@/components/Card"
-import { Greeting } from "@/components/Greeting"
-import { InfoIcon } from "@/components/Icons"
+import { InfoIcon } from "@/components/Icons/InfoIcon"
+
 import { SectionContainer } from "@/components/SectionContainer"
 import { SideShortcuts } from "@/components/SideShortcuts"
 import { Title } from "@/components/Title"
@@ -23,7 +23,6 @@ function CardContainer({ card }) {
 export default function HomePage() {
   return (
     <>
-      <Greeting />
       <SectionContainer className="flex flex-wrap gap-12">
         {Object.values(CARD_TYPES).map((card) => (
           <CardContainer key={card?.type} card={card} />
