@@ -10,7 +10,7 @@ export function Greeting() {
   const [greeting, setGreeting] = useState("Buenos días")
 
   useEffect(() => {
-    if (!user.firstName) {
+    if (!user?.firstName) {
       setGreeting(GREETING_INITIAL_TEXT)
       return
     }

@@ -198,7 +198,7 @@ const Home = () => {
 
   return (
     <>
-      <Title title="Wallets 💳" />
+      <Title>Wallets 💳</Title>
       {publicKey ? (
         <div className="flex flex-col py-24 place-items-center justify-center">
           <br />
