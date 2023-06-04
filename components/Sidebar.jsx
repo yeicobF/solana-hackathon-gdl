@@ -38,9 +38,9 @@ export function Sidebar() {
       aria-label="Sidebar"
     >
       <Image
-        src="/logos/nameless.png"
+        src="/logos/decaf_Black_Brand.png"
         width={48}
-        height={48}
+        height={88}
         alt="Decaf logo"
       />
       <ul class="w-full h-full overflow-y-auto bg-white text-[#1C1B1F] space-y-2 font-medium">
