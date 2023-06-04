@@ -1,5 +1,9 @@
-import { Title } from "@/components/Title"
+import { Greeting } from "@/components/Greeting"
 
 export default function HomePage() {
-  return <Title title="Decaf Pay 🌌" />
+  return (
+    <>
+      <Greeting />
+    </>
+  )
 }

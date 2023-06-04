@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { Title } from "./Title"
 
 const PROFILE_PICTURE_PLACEHOLDER = "/avatars/1.png"
 
