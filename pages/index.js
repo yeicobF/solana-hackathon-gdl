@@ -6,17 +6,18 @@ import { SectionContainer } from "@/components/SectionContainer"
 import { SideShortcuts } from "@/components/SideShortcuts"
 import { Title } from "@/components/Title"
 import { CARD_TYPES } from "@/constants"
-import { Remittance } from "./remittances/[id]"
 import Link from "next/link"
+import { CardContainer } from "@/components/CardContainer"
+import { Cards } from "@/components/Cards"
 
 const REMMITANCE = {
   date: "2023-06-03 09:42AM",
   transactionId: "0x1234567890",
   name: "Amazon Pay",
   type: "Gastos",
-  amount: 6599.00,
-  fee: .10,
-  gasFee: .05,
+  amount: 6599.0,
+  fee: 0.1,
+  gasFee: 0.05,
   currency: "USD",
   status: "pending",
   sender: {
@@ -32,40 +33,24 @@ const REMMITANCE = {
 }
 const TRANSACTIONS = [REMMITANCE]
 
-function CardContainer({ card }) {
-  return (
-    <article className="flex flex-col gap-2 w-xs">
-      <header className="flex justify-between items-center">
-        <h3 className="first-letter:uppercase  font-bold text-lg">
-          {card?.title}
-        </h3>
-        <InfoIcon />
-      </header>
-      <Card type={card?.type} />
-    </article>
-  )
-} 
-
 function RecordOperationContainer({ record }) {
   return (
-    <Link href={`/remittances/${record.transactionId}`} className="flex rounded-lg justify-start items-center  gap-8 hover:bg-slate-300 py-2 px-4">
-
+    <Link
+      href={`/remittances/${record.transactionId}`}
+      className="flex rounded-lg justify-start items-center  gap-8 hover:bg-slate-300 py-2 px-4"
+    >
       <WalletIcon />
       <div className="flex items-start flex-col">
         <h3 className="first-letter:uppercase  font-bold text-lg">
           {record?.name}
         </h3>
-        <h4 className="first-letter:uppercase  font-light">
-          {record?.date}
-        </h4>
+        <h4 className="first-letter:uppercase  font-light">{record?.date}</h4>
+      </div>
+      <div className="flex content-center flex-col">
+        <h4 className="first-letter:uppercase  font-normal">{record?.type}</h4>
       </div>
       <div className="flex content-center flex-col">
         <h4 className="first-letter:uppercase  font-normal">
-          {record?.type}
-        </h4>
-      </div>
-      <div className="flex content-center flex-col">
-      <h4 className="first-letter:uppercase  font-normal">
           ${record?.amount}
         </h4>
       </div>
@@ -73,19 +58,17 @@ function RecordOperationContainer({ record }) {
   )
 }
 
-export default function HomePage() {
+export default function HomePage({ wallets }) {
   return (
     <>
-      <SectionContainer className="flex flex-wrap gap-12">
-        {Object.values(CARD_TYPES).map((card) => (
-          <CardContainer key={card?.type} card={card} />
-        ))}
-      </SectionContainer>
+      <Cards />
       <SectionContainer className="flex flex-col gap-12">
         <Title>Historial</Title>
-
-        {TRANSACTIONS.map(transaction => (
-          <RecordOperationContainer record={transaction}/>
+        {TRANSACTIONS.map((transaction) => (
+          <RecordOperationContainer
+            key={transaction.transactionId}
+            record={transaction}
+          />
         ))}
       </SectionContainer>
       <SideShortcuts />
@@ -93,3 +76,8 @@ export default function HomePage() {
   )
 }
 
+// export const getServerSideProps = async () => {
+//   const transactions = await
+//
+//   return { props: { wallets: {} } }
+// }
