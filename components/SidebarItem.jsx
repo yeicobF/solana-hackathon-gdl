@@ -15,7 +15,7 @@ export function SidebarItem({ text, icon, link, isActive }) {
         >
           {icon}
         </div>
-        <span class="ml-3">{text}</span>
+        <span className="ml-3">{text}</span>
       </Link>
     </li>
   )

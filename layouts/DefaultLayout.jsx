@@ -5,7 +5,7 @@ export const DefaultLayout = ({ children }) => {
   return (
     <div className="flex flex-row w-screen h-screen ">
       <Sidebar />
-      <main className="flex px-8 py-12 w-full items-start">
+      <main className="flex px-8 py-12 w-full justify-start flex-col gap-12">
         {children}
         <Toaster position="bottom-center" />
       </main>
