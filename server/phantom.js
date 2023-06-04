@@ -12,7 +12,10 @@ import {
 } from "@solana/web3.js";
 
 import { useStorageUpload, userStorage } from "@thirdweb-dev/react";
-import { createNewTransaction } from "@/server/firestoreUtils";
+import {
+  createNewTransaction,
+  getMyTransactions,
+} from "@/server/firestoreUtils";
 
 const SOLANA_NETWORK = "devnet"; //cuando ya quiera hacer transacciones en la red principal, cambiar a mainnet
 const LAMPORT = 0.000000001;
@@ -130,7 +133,7 @@ const Home = () => {
         })
       );
 
-      console.info("Sending transaction...", transaction)
+      console.info("Sending transaction...", transaction);
 
       //Treaemos el ultimo blockhash
       const { blockhash } = await connection.getLatestBlockhash();
@@ -156,10 +159,14 @@ const Home = () => {
       const solanaExplorerLink = `https://explorer.solana.com/tx/${txid}?cluster=${SOLANA_NETWORK}`;
       setExplorerLink(solanaExplorerLink);
 
-      const feeQuery = await connection.getFeeForMessage(transaction.compileMessage());
+      const feeQuery = await connection.getFeeForMessage(
+        transaction.compileMessage()
+      );
       const fee = feeQuery.value / LAMPORTS_PER_SOL;
 
       toast.success("Transaction sent");
+
+      getMyTransactions(publicKey);
 
       createNewTransaction({
         from: publicKey,
