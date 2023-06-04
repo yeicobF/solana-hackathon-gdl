@@ -1,7 +1,10 @@
 import { useRouter } from "next/router"
 import { SidebarItem } from "./SidebarItem"
+import { LoadingSpinner } from "./LoadingSpinner"
 import { HomeIcon, RemittanceIcon, StatsIcon, WalletIcon } from "./Icons"
 import Image from "next/image"
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs"
+import { Button } from "./Button"
 
 const SIDEBAR_ITEMS = [
   {
@@ -25,6 +28,19 @@ const SIDEBAR_ITEMS = [
     link: "/stats",
   },
 ]
+
+function AuthSection() {
+  const { isLoaded, isSignedIn } = useUser()
+
+  if (!isLoaded) return <LoadingSpinner size={24} />
+  if (isSignedIn) return <UserButton />
+
+  return (
+    <Button>
+      <SignInButton />
+    </Button>
+  )
+}
 
 export function Sidebar() {
   const router = useRouter()
@@ -54,6 +70,9 @@ export function Sidebar() {
           />
         ))}
       </ul>
+      <section>
+        <AuthSection />
+      </section>
     </aside>
   )
 }

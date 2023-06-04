@@ -1,5 +1,6 @@
-import {DefaultLayout} from "@/layouts/DefaultLayout"
+import { DefaultLayout } from "@/layouts/DefaultLayout"
 import "@/styles/globals.css"
+import { ClerkProvider } from "@clerk/nextjs"
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react"
 import Head from "next/head"
 
@@ -11,11 +12,13 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Decaf Pay</title>
       </Head>
-      <ThirdwebProvider desireChainId={activeChainId}>
-        <DefaultLayout>
-          <Component {...pageProps} />
-        </DefaultLayout>
-      </ThirdwebProvider>
+      <ClerkProvider {...pageProps}>
+        <ThirdwebProvider desireChainId={activeChainId}>
+          <DefaultLayout>
+            <Component {...pageProps} />
+          </DefaultLayout>
+        </ThirdwebProvider>
+      </ClerkProvider>
     </>
   )
 }
