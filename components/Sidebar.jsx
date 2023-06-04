@@ -1,7 +1,10 @@
 import { useRouter } from "next/router"
 import { SidebarItem } from "./SidebarItem"
 import { LoadingSpinner } from "./LoadingSpinner"
-import { HomeIcon, RemittanceIcon, StatsIcon, WalletIcon } from "./Icons"
+import { HomeIcon } from "./Icons/HomeIcon"
+import { RemittanceIcon } from "./Icons/RemittanceIcon"
+import { StatsIcon } from "./Icons/StatsIcon"
+import { WalletIcon } from "./Icons/WalletIcon"
 import Image from "next/image"
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs"
 import { Button } from "./Button"
@@ -55,8 +58,8 @@ export function Sidebar() {
     >
       <Image
         src="/logos/decaf_Black_Brand.png"
-        width={48}
-        height={88}
+        width={160}
+        height={44}
         alt="Decaf logo"
       />
       <ul className="w-full h-full overflow-y-auto bg-white text-[#1C1B1F] space-y-2 font-medium">
