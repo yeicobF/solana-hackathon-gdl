@@ -1,6 +1,6 @@
 export function SectionContainer({ children, ...props }) {
   return (
-    <section className="border-1 border-[#CBCBCB] rounded" {...props}>
+    <section className="flex flex-col gap-12" {...props}>
       {children}
     </section>
   )

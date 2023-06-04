@@ -16,7 +16,7 @@ const chartdata = [
 ]
 
 const dataFormatter = (number) =>
-  `${Intl.NumberFormat("us").format(number).toString()}%`
+  `${Intl.NumberFormat("us").format(number).toString()}% `
 
 const DEFAULT_COUNTRY = "Argentina"
 
@@ -35,7 +35,7 @@ export const InflationChart = ({ country = DEFAULT_COUNTRY }) => {
 
   return (
     <Card>
-      <Title>Inflación en {country}</Title>
+      <Title className="text-xl font-medium">📊 Inflación en {country}</Title>
 
       <LineChart
         className="mt-6 h-96 lg:h-72 lg:w-full w-[30rem]"
@@ -43,6 +43,7 @@ export const InflationChart = ({ country = DEFAULT_COUNTRY }) => {
         index="month"
         categories={["Inflación"]}
         colors={["purple"]}
+        dataFormatter={dataFormatter}
         yAxisWidth={40}
       />
     </Card>

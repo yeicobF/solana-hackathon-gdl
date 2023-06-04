@@ -13,6 +13,7 @@ import {
 
 import { useStorageUpload, userStorage } from "@thirdweb-dev/react"
 import { Title } from "@/components/Title"
+import { Cards } from "@/components/Cards"
 
 const SOLANA_NETWORK = "devnet" //cuando ya quiera hacer transacciones en la red principal, cambiar a mainnet
 
@@ -199,6 +200,7 @@ const Home = () => {
   return (
     <>
       <Title>Wallets 💳</Title>
+      <Cards />
       {publicKey ? (
         <div className="flex flex-col py-24 place-items-center justify-center">
           <br />
