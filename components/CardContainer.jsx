@@ -1,5 +1,5 @@
 import { Card } from "./Card"
-import { InfoIcon } from "./Icons/InfoIcon"
+import { InfoIcon } from "@/components/Icons/InfoIcon"
 
 export function CardContainer({ card }) {
   return (
