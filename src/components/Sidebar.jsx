@@ -1,10 +1,12 @@
 import { useRouter } from "next/router"
 import { SidebarItem } from "./SidebarItem"
 import { LoadingSpinner } from "./LoadingSpinner"
-import { HomeIcon } from "@/components/Icons/HomeIcon"
-import { RemittanceIcon } from "@/components/Icons/RemittanceIcon"
-import { StatsIcon } from "@/components/Icons/StatsIcon"
-import { WalletIcon } from "@/components/Icons/WalletIcon"
+import {
+  HomeIcon,
+  RemittanceIcon,
+  StatsIcon,
+  WalletIcon,
+} from "@/components/Icons"
 import Image from "next/image"
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs"
 import { Button } from "./Button"

@@ -1,13 +1,8 @@
-import { Card } from "@/components/Card"
-import { Greeting } from "@/components/Greeting"
-import { WalletIcon } from "@/components/Icons/WalletIcon"
-import { InfoIcon } from "@/components/Icons/InfoIcon"
+import { WalletIcon, InfoIcon } from "@/components/Icons"
 import { SectionContainer } from "@/components/SectionContainer"
 import { SideShortcuts } from "@/components/SideShortcuts"
 import { Title } from "@/components/Title"
-import { CARD_TYPES } from "@/constants"
 import Link from "next/link"
-import { CardContainer } from "@/components/CardContainer"
 import { Cards } from "@/components/Cards"
 
 const REMMITANCE = {
