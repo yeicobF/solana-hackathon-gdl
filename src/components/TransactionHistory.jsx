@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { WalletIcon } from "./icons/WalletIcon"
+import { WalletIcon } from "@/components/Icons"
+import { TRANSACTIONS } from "@/constants"
 
-export function RecordOperationContainer({ transaction }) {
+export function ListMovement({ transaction }) {
   return (
     <Link
       href={`/remittances/${transaction.transactionId}`}
@@ -30,11 +31,15 @@ export function RecordOperationContainer({ transaction }) {
   )
 }
 
-export function TransactionHistory({ transactions }) {
-  return transactions.map((transaction) => (
-    <RecordOperationContainer
-      key={transaction.transactionId}
-      transaction={transaction}
-    />
-  ))
+export function TransactionHistory() {
+  return (
+    <div className="flex flex-col gap-1 w-full">
+      {TRANSACTIONS.map((transaction) => (
+        <ListMovement
+          key={transaction.transactionId}
+          transaction={transaction}
+        />
+      ))}
+    </div>
+  )
 }
