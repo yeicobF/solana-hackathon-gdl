@@ -11,13 +11,10 @@
 Figma: https://www.figma.com/file/64hsBvdHuaFVbynuvSX6dX/Mockup?type=design&node-id=0%3A1&t=1LDYZFowqdJpJaVL-1
 
 <br>
-Prototipo Figma:
-<br>
-Documentos del proyecto:
-<br>
+Prototipo: https://drive.google.com/drive/folders/1xwkuByuwRU7GWFcl3YvTwvU2v4Hr720J
 
 <br>
-Video:
+Video: https://www.youtube.com/watch?v=JEcLsvFy13E
 <br>
 
 
