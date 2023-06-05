@@ -11,7 +11,6 @@ export default function HomePage() {
       <Cards />
       <SectionContainer className="flex flex-col gap-12">
         <Title>Historial</Title>
-        <Button></Button>
         <TransactionHistory />
       </SectionContainer>
       <SideShortcuts />
